@@ -18,6 +18,9 @@ package lab0;
  */
 public class Employee {
     public static final int MAX_VACATION_DAYS = 28;
+    public static final int MIN_VACATION_DAYS = 0;
+    public static final int MAX_NAME_LENGHT = 15;
+    public static final int SSN_LENGHT = 9;
     private String firstName;
     private String lastName;
     private String ssn;
@@ -31,7 +34,7 @@ public class Employee {
         daysVacation = 0;
     }
 
-    public Employee(String firstName, String lastName, String ssn, int daysVacation) throws IllegalArgumentException {
+    public Employee(String firstName, String lastName, String ssn, int daysVacation) throws IllegalArgumentException, Exception {
         setFirstName(firstName);
         setLastName(lastName);
         setSsn(ssn);
@@ -42,35 +45,48 @@ public class Employee {
         return daysVacation;
     }
 
-    public void setDaysVacation(int daysVacation) {
+    public void setDaysVacation(int daysVacation) throws Exception{
+        if (daysVacation<MIN_VACATION_DAYS || daysVacation>MAX_VACATION_DAYS){
+            throw new Exception();
+        } else {
         this.daysVacation = daysVacation;
+        }
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public final void setFirstName(String firstName) {
-       
+    public final void setFirstName(String firstName) throws Exception{
+       if (firstName == null || firstName.length()>MAX_NAME_LENGHT){
+           throw new Exception();
+       }else {
         this.firstName = firstName;
+       }
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        
+    public void setLastName(String lastName) throws Exception{
+        if (firstName == null || lastName.length()>MAX_NAME_LENGHT){
+           throw new Exception();
+       }else {
         this.lastName = lastName;
+       }
     }
 
     public final String getSsn() {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
-        
+    public void setSsn(String ssn) throws Exception{
+        if (ssn.length()!=SSN_LENGHT){
+            throw new Exception();
+        } else {
         this.ssn = ssn;
+        }
     }
     
     
